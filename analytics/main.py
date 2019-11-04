@@ -13,6 +13,7 @@ import mds
 
 import measure
 import query
+import timeline
 
 
 def setup_cli():
@@ -149,7 +150,8 @@ def availability(provider_name, vehicle_type, start, end, **kwargs):
 
         log(debug, f"{len(data)} availability records in time period")
 
-        devices = measure.DeviceCounter(start, _end, **kwargs)
+        # devices = measure.DeviceCounter(start, _end, **kwargs)
+        devices = timeline.Timeline(start, _end, **kwargs)
 
         yield (start, _end, devices.count(data))
 
